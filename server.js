@@ -34,6 +34,9 @@ app.use('/js',express.static(path.resolve(path.dirname('assets/js'))));
 app.get('/',(req,res)=>{
     res.render('index');
 });
+app.get('/create',(req,res)=>{
+    res.render('create');
+});
 
 
 
