@@ -3,6 +3,7 @@ const dotenv=require('dotenv');
 const morgan=require('morgan');
 const bodyparser=require('body-parser');
 const path=require('path');
+const connectDB=require('./server/database/connection');
 
 
 // create app
@@ -12,6 +13,8 @@ const app=express();
 // log rerquest
 app.use(morgan('tiny'));
 
+//mongodb connection
+connectDB();
 
 //config env
 dotenv.config({path:"config.env"});
@@ -31,12 +34,7 @@ app.use('/js',express.static(path.resolve(path.dirname('assets/js'))));
 
 
 //routes
-app.get('/',(req,res)=>{
-    res.render('index');
-});
-app.get('/create',(req,res)=>{
-    res.render('create');
-});
+app.use('/',require('./server/routes/crud'));
 
 
 
