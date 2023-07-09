@@ -2,7 +2,8 @@ const mongoose=require('mongoose');
 const dotenv=require('dotenv');
 dotenv.config({path:"config.env"});
 
-const connectDB=async()=>{
+module.exports=async function()
+{
     try {
         const mongoURL=process.env.MONGO_URL || 'mongodb://localhost/crud_app'
         const con= await mongoose.connect(mongoURL,{
@@ -17,5 +18,3 @@ const connectDB=async()=>{
          process.exit(1);
     }
 }
-
-module.exports=connectDB
