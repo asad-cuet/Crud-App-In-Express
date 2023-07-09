@@ -19,8 +19,6 @@ connectDB();
 //config env
 dotenv.config({path:"config.env"});
 
-//parse request to body parser
-app.use(bodyparser.urlencoded({extended:true}));
 
 //set view engine
 app.set('view engine','ejs');
@@ -33,8 +31,14 @@ app.use('/img',express.static(path.resolve(path.dirname('assets/img'))));
 app.use('/js',express.static(path.resolve(path.dirname('assets/js'))));
 
 
+//parse request to body parser, use
+app.use(bodyparser.urlencoded({extended:true}));
+//***for post,put request
+app.use(express.json());  
+
+
 //routes
-app.use('/',require('./server/routes/crud'));
+app.use('/users',require('./server/routes/users'));
 
 
 
