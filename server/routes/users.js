@@ -13,7 +13,7 @@ route.get('/edit',UserService.create);
 //api
 route.post('/',UserController.store);
 route.get('/:id',UserController.show);
-route.post('/update/:id',UserController.update);
+route.put('/update/:id',UserController.update);
 route.get('/delete/:id',UserController.destroy);
 
 
