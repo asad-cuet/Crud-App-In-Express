@@ -2,6 +2,12 @@ const {User,validateUser}=require('../model/user');
 const lodash=require('lodash');  
 const bcrypt=require('bcrypt');  
 
+exports.index=async(req,res)=>{
+    
+    const users=await User.find().select('-password');
+    return res.status(200).send(users);
+}
+
 exports.store=async(req,res)=>{
     const {error}=validateUser(req.body);
     if(error)
