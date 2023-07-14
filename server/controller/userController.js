@@ -14,6 +14,10 @@ exports.store=async(req,res)=>{
     {
         return res.status(400).send(error.details[0].message);
     }
+    if(req.body.password && req.body.password=='')
+    {
+        return res.status(400).send("Passowrd is required");
+    }
 
     const user= new User(lodash.pick(req.body,['name','email','password','city','country_id','isActive']));
     const salt=await bcrypt.genSalt(10);
@@ -47,11 +51,14 @@ exports.update=async(req,res)=>{
             user.city=req.body.city;
             user.country_id=req.body.country_id;
             user.isActive=req.body.isActive;
-    
-            const salt=await bcrypt.genSalt(10);
-            const hashed= await bcrypt.hash(user.password,salt);
-            user.password=hashed;
-    
+            
+            if(req.body.password && req.body.password!='')
+            {
+                const salt=await bcrypt.genSalt(10);
+                const hashed= await bcrypt.hash(user.password,salt);
+                user.password=hashed;
+            }
+
             await user.save();
             return res.send(lodash.pick(user,['_id','name','email','city','country_id','isActive']));
         }

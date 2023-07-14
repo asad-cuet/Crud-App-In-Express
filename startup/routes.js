@@ -12,6 +12,7 @@ module.exports=function(app)
 
     //routes
         app.use('/users',require('../server/routes/users'));
+        app.use('/api/users',require('../server/api/users'));
 
 
 }

@@ -1,0 +1,55 @@
+<!-- Include Header -->
+<%- include('../include/_header')  %>
+<!-- /Include Header -->
+
+
+
+<div class="row">
+  <div class="col-10">
+    <h2>All Users</h2>
+  </div>
+  <div class="col-2" style="float:right;">
+    <a href="/users/create" class="btn btn-sm btn-primary">
+      Create User
+    </a>
+  </div>
+</div>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">City</th>
+        <th scope="col">Country ID</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% var i=1 %>
+      <% users.forEach(function(item){ %>
+        <tr>
+          <th scope="row"><%= i++ %></th>
+          <td><%= item.name %></td>
+          <td><%= item.email %></td>
+          <td><%= item.city %></td>
+          <td><%= item.country_id %></td>
+          <td>
+            <a href="/users/edit/<%= item._id %>" class="btn btn-sm btn-primary">
+              Edit
+            </a>
+            <a href="/users/delete/<%= item._id %>" class="btn btn-sm btn-danger">
+              Delete
+            </a>
+          </td>
+        </tr>
+      <% }) %>
+
+    </tbody>
+  </table>
+
+<!-- Include Footer -->
+<%- include('../include/_footer')  %>
+<!-- /Include Footer -->
+    

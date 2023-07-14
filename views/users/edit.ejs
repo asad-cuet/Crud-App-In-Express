@@ -1,0 +1,49 @@
+<!-- Include Header -->
+<%- include('../include/_header')  %>
+<!-- /Include Header -->
+
+
+<form class="row g-3" method="POST" action="/users/update/<%= user._id %>">
+    <div class="col-md-12">
+      <label for="inputName" class="form-label">Name</label>
+      <input type="text" class="form-control" name="name" value="<%= user.name %>" id="inputName">
+    </div>
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="email" class="form-control" name="email" value="<%= user.email %>" id="inputEmail4">
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Password</label>
+      <input type="password" class="form-control" name="password" placeholder="Leave Empty to avoid update" id="inputPassword4">
+    </div>
+    <div class="col-md-6">
+      <label for="inputCity" class="form-label">City</label>
+      <input type="text" class="form-control" name="city" value="<%= user.city %>" id="inputCity">
+    </div>
+    <div class="col-md-6">
+      <label for="inputCountry" class="form-label">Country</label>
+      <select id="inputCountry" class="form-select" name="country_id" >
+        <option>Choose...</option>
+        <option value="1" <% if(user.country_id==1) { %> selected <% } %>>1</option>
+        <option value="2" <% if(user.country_id==2) { %> selected <% } %>>2</option>
+        <option value="3" <% if(user.country_id==3) { %> selected <% } %>>3</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" value="1" name="isActive" <% if(user.isActive) { %> checked <% } %>>
+        <label class="form-check-label" for="gridCheck">
+          Is Active
+        </label>
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+  </form>
+
+
+<!-- Include Footer -->
+<%- include('../include/_footer')  %>
+<!-- /Include Footer -->
+    
