@@ -13,6 +13,9 @@ require('./startup/routes')(app);
 require('./startup/template')(app);
 require('./startup/config')();
 
+app.get('/',(req,res)=>{
+    res.redirect('/users');
+})
 
 // listen to port
 const PORT=process.env.PORT || 8080;
