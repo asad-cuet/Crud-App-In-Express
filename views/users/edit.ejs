@@ -6,11 +6,11 @@
 <form class="row g-3" method="POST" action="/users/update/<%= user._id %>">
     <div class="col-md-12">
       <label for="inputName" class="form-label">Name</label>
-      <input type="text" class="form-control" name="name" value="<%= user.name %>" id="inputName">
+      <input type="text" class="form-control" name="name" value="<%= user.name %>" id="inputName" required>
     </div>
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Email</label>
-      <input type="email" class="form-control" name="email" value="<%= user.email %>" id="inputEmail4">
+      <input type="email" class="form-control" name="email" value="<%= user.email %>" id="inputEmail4" required>
     </div>
     <div class="col-md-6">
       <label for="inputPassword4" class="form-label">Password</label>
@@ -18,11 +18,11 @@
     </div>
     <div class="col-md-6">
       <label for="inputCity" class="form-label">City</label>
-      <input type="text" class="form-control" name="city" value="<%= user.city %>" id="inputCity">
+      <input type="text" class="form-control" name="city" value="<%= user.city %>" id="inputCity" required>
     </div>
     <div class="col-md-6">
       <label for="inputCountry" class="form-label">Country</label>
-      <select id="inputCountry" class="form-select" name="country_id" >
+      <select id="inputCountry" class="form-select" name="country_id" required>
         <option>Choose...</option>
         <option value="1" <% if(user.country_id==1) { %> selected <% } %>>1</option>
         <option value="2" <% if(user.country_id==2) { %> selected <% } %>>2</option>
